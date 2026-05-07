@@ -33,3 +33,6 @@ Thumbs.db
 *.sqlite
 *.sqlite3
 pgdata/
+
+# Claude Code local settings (per-user, do not commit)
+.claude/settings.local.json

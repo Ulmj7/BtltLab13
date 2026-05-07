@@ -1,18 +1,18 @@
 # PROJECT.md — URL Shortener
 
-> Хэсэг А (Plan) баримтын нэг хэсэг. Бие даалт 13 — F.CSM311.
+> А хэсэг (Төлөвлөлт)-ийн баримт бичгийн нэг хэсэг. Бие даалт 13 — F.CSM311.
 
 ## 1. Сонгосон сэдэв
 
-**URL Shortener** (URL богиносгогч) — Бие даалтын даалгаврын 1-р хувилбар.
+**URL Shortener** (URL богиносгогч) — даалгаварт өгөгдсөн 1-р сонголт.
 
 ## 2. Brief (товч тайлбар)
 
 Урт URL-ийг богино, дахин ашиглаж болохуйц код руу хөрвүүлж, тэрхүү богино
 URL-аар хандсан үед хэрэглэгчийг анхны URL руу redirect хийдэг REST API
 үйлчилгээ. Минимал HTML frontend нь URL оруулах, богиносгох, хуулах
-үйлдлүүдийг гүйцэтгэнэ. Жижиг боловч production-д хэрэгтэй features багтсан:
-**click counter** болон **expiration**.
+үйлдлүүдийг гүйцэтгэнэ. Жижиг боловч production-д хэрэгтэй чадваруудыг
+багтаасан: **click counter** болон **expiration**.
 
 > Жишээ: `https://example.com/blog/2026/05/very-long-article-title-here`
 > → `http://localhost:3000/Ab3xK9` (богино, click тоологддог, 30 хоногт хүчинтэй)
@@ -23,7 +23,7 @@ URL-аар хандсан үед хэрэглэгчийг анхны URL руу 
 
 - AI-тай хамтран ажиллах *Spec → Generate → Review → Integrate* workflow эзэмших
 - Кодлогчийн "бичих" үүргээс **дизайн / верификаци / агуулга** руу шилжих
-- Hallucination, security risk-ыг бодитоор олж засах туршлага
+- Hallucination болон security risk-ийг практикт олж засах туршлага
 - ADR (Architecture Decision Record) бичих практик
 
 ### Техникийн зорилго (бүтээгдэхүүний)
@@ -31,7 +31,7 @@ URL-аар хандсан үед хэрэглэгчийг анхны URL руу 
 - Богино код үүсгэх алгоритмыг найдвартай (collision-гүй) болгох
 - Хандалтын статистикийг (click count) хадгалах, харуулах
 - Expiration mechanism-ыг ажиллуулах (хүчингүй болсон код 410 буцаах)
-- Хамгаас багадаа 10 unit test pass болсон байх
+- Хамгийн багадаа 10 unit test pass болсон байх
 - OpenAPI 3.0 spec-ийг автоматаар үүсгэх
 
 ## 4. Scope (хамрах хүрээ)
@@ -49,7 +49,7 @@ URL-аар хандсан үед хэрэглэгчийг анхны URL руу 
 
 ### Out of scope ❌ (анхны хувилбарт орохгүй)
 
-- User authentication / authorization (анх public, хэрэгцээ гарвал хойтон)
+- User authentication / authorization (анх public, шаардлагатай бол хойшид нэмж болно)
 - Custom domain эсвэл custom alias
 - Хандалтын дэлгэрэнгүй analytics (geo, device, referer)
 - QR code үүсгэх
@@ -92,7 +92,7 @@ URL-аар хандсан үед хэрэглэгчийг анхны URL руу 
 | Богино код collision                | Бага     | Өндөр | UNIQUE constraint + retry logic               |
 | Open redirect security risk         | Дунд     | Өндөр | URL-ийг http(s) форматаар validate хийх       |
 | Time-rush — нэг өдөр бүгдийг хийх   | Дунд     | Өндөр | Daily plan, ≥5 өөр өдөр commit-той явах       |
-| Skill atrophy (AI хэт their)        | Дунд     | Дунд  | "AI-гүй" зөв цаг гарган өөрөө бичих           |
+| Skill atrophy (AI-д хэт найдах)     | Дунд     | Дунд  | "AI-гүй" цаг гарган өөрөө кодлох              |
 
 ## 8. Дараагийн алхам
 
